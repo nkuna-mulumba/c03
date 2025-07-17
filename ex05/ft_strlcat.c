@@ -25,37 +25,37 @@
 */
 unsigned int    ft_strlcat(char *dest, char *src, unsigned int size)
 {
-    unsigned int    i;
-    unsigned int    j;
+    unsigned int    len_dest;
+    unsigned int    len_src;
     unsigned int    k;
 
-    i = 0;
+    len_dest = 0;
     // Medir tamanho atual de dest
-    while (dest[i] && i < size)
+    while (dest[len_dest] && len_dest < size)
     {
-        i++;
+        len_dest++;
     }
     
-    j = 0;
+    len_src = 0;
     // Se i já >= size, não podemos concatenar nada → retorna size + strlen(src)
-    while (src[j])
+    while (src[len_src])
     {
-        j++;
+        len_src++;
     }
-    if (i >= size)
+    if (len_dest >= size)
     {
-        return(size + j);
+        return(size + len_src);
     }
     
     k = 0;
     // Começa a copiar src no fim de dest
-    while (src[k] && (i + k + 1) < size)
+    while (src[k] && (len_dest + k + 1) < size)
     {
-        dest[i + k] = src[k];
+        dest[len_dest + k] = src[k];
         k++;
     }
-    dest[i + k] = '\0';
-    return(i + j);
+    dest[len_dest + k] = '\0';
+    return(len_dest + len_src);
 }
 
 /*
