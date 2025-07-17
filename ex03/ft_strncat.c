@@ -24,22 +24,22 @@
 */
 char    *ft_strncat(char *dest, char *src, unsigned int nb)
 {
-    int i;
-    int j;
+    unsigned int len_dest;
+    unsigned int i;
 
+    len_dest = 0;
+    while (dest[len_dest])
+    {
+        len_dest++;
+    }
     i = 0;
-    while (dest[i])
+    while ((i < nb) && src[i])
     {
+        dest[len_dest] = src[i];
+        len_dest++;
         i++;
     }
-    j = 0;
-    while ((j < nb) && src[j])
-    {
-        dest[i] = src[j];
-        i++;
-        j++;
-    }
-    dest[i] = '\0';
+    dest[len_dest] = '\0';
     return(dest);
 }
 
